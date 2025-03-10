@@ -1,0 +1,55 @@
+@import "@styles/variables";
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+    width: 80%;
+
+    input {
+      padding: 10px;
+      background-color: #adadad;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      width: 75%;
+      transition: background-color 300ms ease;
+
+      &:focus {
+        outline: none;
+        background-color: $white;
+      }
+    }
+
+    .preference {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 10px;
+      width: 50%;
+      text-align: center;
+
+      label {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+}

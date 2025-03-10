@@ -1,0 +1,28 @@
+@import "@styles/variables.scss";
+
+.content {
+  width: 55vw;
+  margin: 0 auto;
+}
+
+.home {
+  h1 {
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+    font-family: $header-font;
+
+    span {
+      display: inline-block;
+      transition: transform 300ms ease;
+    }
+
+    span:hover {
+      transform: translateY(-10px);
+    }
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+}
