@@ -5,8 +5,10 @@ import Ingredient from "@components/Ingredient";
 
 export default function Inputs() {
   const [ingredients, setIngredients] = useState([]);
+  const [response, setResponse] = useState("");
 
   const updateIngredient = (id, newValue, newPref) => {
+    //this looks digusting LMAO
     setIngredients((prevIngredients) =>
       prevIngredients.map((ingredient) =>
         ingredient.id === id
@@ -27,12 +29,27 @@ export default function Inputs() {
     setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
   };
 
-  const submit = () => {
-    console.log(
-      "i would like to make a recipe containing the following. the list will have an item, as well as how much i like that item.",
-      ingredients
-    );
-  };
+  async function submit() {
+    console.log("sending", ingredients);
+
+    const res = await fetch("/api/request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ingredients }),
+    });
+
+    if (!res.ok) {
+      setResponse("error fetching response");
+      return;
+    }
+
+    const data = await res.json();
+
+    console.log("response data:", data);
+    console.log("response object:", res);
+
+    setResponse(data.reply || "error fetching response");
+  }
 
   const Ingredients = () => {
     return (
@@ -56,6 +73,7 @@ export default function Inputs() {
       {Ingredients()}
       <button onClick={addIngredient}>Add Ingredient</button>
       <button onClick={submit}>Submit</button>
+      <p>{response}</p>
     </div>
   );
 }
