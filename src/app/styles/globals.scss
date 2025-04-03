@@ -1,4 +1,4 @@
-@import "variables";
+@use "./all" as *;
 @import url("https://api.fontshare.com/v2/css?f[]=panchang@300,400,500,700&f[]=tabular@300,400,500&display=swap");
 
 * {

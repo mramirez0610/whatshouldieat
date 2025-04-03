@@ -1,4 +1,4 @@
-@import "@styles/variables";
+@use "../all" as *;
 
 .inputs {
   display: flex;
@@ -48,6 +48,40 @@
     }
   }
 
+  .buttons {
+    display: flex;
+    gap: 2vh;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    .button {
+      font-family: $body-font;
+
+      display: block;
+      box-sizing: border-box;
+      border: 2px solid $black;
+      border-radius: 0.75em;
+      padding: 0.75em 1.5em;
+      background: $white;
+      color: $black;
+      transform: translateY(-0.2em);
+      transition: transform 0.1s ease;
+
+      font-size: 17px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-0.33em);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
   .error {
     color: red;
     font-size: 12px;

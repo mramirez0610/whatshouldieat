@@ -83,8 +83,14 @@ export default function Inputs() {
       ) : (
         <>
           {Ingredients()}
-          <button onClick={addIngredient}>Add Ingredient</button>
-          <button onClick={submit}>Submit</button>
+          <div className={styles.buttons}>
+            <button className={styles.button} onClick={addIngredient}>
+              Add Ingredient
+            </button>
+            <button className={styles.button} onClick={submit}>
+              Submit
+            </button>
+          </div>
         </>
       )}
     </div>
