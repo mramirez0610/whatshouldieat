@@ -30,16 +30,33 @@ export async function POST(req) {
       model: "gpt-4o-mini",
       messages: [
         {
+          role: "system",
+          content: `return response in the following JSON format:
+          {
+            "recipeTitle": "--",
+            "requestedIngredients": ["--- - Preference: 5", "--- - Preference: 5", "--- - Preference: 5"],
+            "optionalIngredients": [---],
+            "instructions": [
+              "---",
+              "---"
+            ],
+            "tips": [
+              "---",
+              "---"
+            ]
+          }`,
+        },
+        {
           role: "user",
           content: `i would like to make a recipe containing the following. the list will have an item, as well as how much i like that item.", ${ingredientList}`,
         },
       ],
     });
 
-    return new Response(
-      JSON.stringify({ reply: response.choices[0].message.content }),
-      { status: 200 }
-    );
+    const aiResponse = response.choices[0].message.content;
+    const parsedResponse = JSON.parse(aiResponse);
+
+    return new Response(JSON.stringify(parsedResponse), { status: 200 });
   } catch (error) {
     console.error("error calling openai:", error);
 

@@ -2,10 +2,13 @@
 import { useState } from "react";
 import styles from "@styles/components/input.module.scss";
 import Ingredient from "@components/Ingredient";
+import Recipe from "@components/Recipe";
 
 export default function Inputs() {
   const [ingredients, setIngredients] = useState([]);
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(""); // purely for logging data at this point
+  const [recipeData, setRecipeData] = useState(null);
+  const [showRecipe, setShowRecipe] = useState(false); // toggles between inputs and recipe
 
   const updateIngredient = (id, newValue, newPref) => {
     //this looks digusting LMAO
@@ -46,10 +49,15 @@ export default function Inputs() {
     const data = await res.json();
 
     console.log("response data:", data);
-    console.log("response object:", res);
+    console.log(res);
 
-    setResponse(data.reply || "error fetching response");
+    setRecipeData(data);
+    setShowRecipe(true); // switches views
   }
+
+  const handleBackToInputs = () => {
+    setShowRecipe(false); // returns to inputs
+  };
 
   const Ingredients = () => {
     return (
@@ -70,10 +78,15 @@ export default function Inputs() {
 
   return (
     <div className={styles.inputs}>
-      {Ingredients()}
-      <button onClick={addIngredient}>Add Ingredient</button>
-      <button onClick={submit}>Submit</button>
-      <p>{response}</p>
+      {showRecipe ? (
+        <Recipe data={recipeData} onBack={handleBackToInputs} />
+      ) : (
+        <>
+          {Ingredients()}
+          <button onClick={addIngredient}>Add Ingredient</button>
+          <button onClick={submit}>Submit</button>
+        </>
+      )}
     </div>
   );
 }

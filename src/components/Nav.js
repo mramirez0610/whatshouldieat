@@ -2,6 +2,7 @@
 import styles from "@styles/components/nav.module.scss";
 import Modal from "@components/Modal";
 import AboutModal from "@components/AboutModal";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Nav() {
@@ -13,6 +14,9 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <ul>
+        <li>
+          <Link href="/recipes">recipes</Link>
+        </li>
         <li>
           <div onClick={openModal}>About</div>
           <Modal isOpen={isModalOpen} closeModal={closeModal}>
