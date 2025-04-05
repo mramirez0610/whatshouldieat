@@ -55,8 +55,8 @@ export default function Recipe({ data, onBack }) {
         <div className={styles.optionalIngredients}>
           <h1>Optional Ingredients</h1>
           <ul>
-            {data.optionalIngredients.length === 0 ||
-            !data.optionalIngredients ? (
+            {!Array.isArray(data.optionalIngredients) ||
+            data.optionalIngredients.length === 0 ? (
               <li>No optional ingredients</li>
             ) : (
               data.optionalIngredients.map((item, index) => (
