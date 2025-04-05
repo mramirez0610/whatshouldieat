@@ -69,7 +69,7 @@ export default function Recipe({ data, onBack }) {
       <div className={styles.instructions}>
         <h1>Instructions</h1>
         <ol>
-          {data.instructions.map((step, index) => (
+          {data.instructions?.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
         </ol>
