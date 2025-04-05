@@ -77,7 +77,7 @@ export default function Recipe({ data, onBack }) {
       <div className={styles.tips}>
         <h1>Tips</h1>
         <ul>
-          {data.tips.map((tip, index) => (
+          {data.tips?.map((tip, index) => (
             <li key={index}>{tip}</li>
           ))}
         </ul>
