@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "@styles/components/input.module.scss";
 import Ingredient from "@components/Ingredient";
 import Recipe from "@components/Recipe";
@@ -9,6 +9,10 @@ export default function Inputs() {
   const [response, setResponse] = useState(""); // purely for logging data at this point
   const [recipeData, setRecipeData] = useState(null);
   const [showRecipe, setShowRecipe] = useState(false); // toggles between inputs and recipe
+
+  useEffect(() => {
+    addIngredient();
+  }, []);
 
   const updateIngredient = (id, newValue, newPref) => {
     //this looks digusting LMAO

@@ -28,7 +28,9 @@ export default function Ingredient({
         />
         <p>How Much Do You Like This Ingredient?</p>
       </div>
-      <button onClick={() => removeIngredient(id)}>remove</button>
+      <button className={styles.remove} onClick={() => removeIngredient(id)}>
+        remove
+      </button>
     </div>
   );
 }
