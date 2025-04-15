@@ -1,14 +1,30 @@
 @use "../all" as *;
 
 .recipe {
-  .back {
-    font-family: $header-font;
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2%;
+
+    .button {
+      @include button;
+      padding: 0.75em 1.5em;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .recipeTitle {
+    font-size: 2.5rem;
+    text-decoration: underline;
+    font-family: $header-font;
   }
 
   .ingredients {
+    width: 90%;
     .requestedIngredients {
     }
     .optionalIngredients {

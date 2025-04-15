@@ -1,5 +1,7 @@
 "use client";
+import styles from "@styles/pages/recipes.module.scss";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -14,10 +16,11 @@ export default function Recipes() {
 
   const recipeList = () => {
     return (
-      <div>
+      <div className={styles.recipes}>
         {recipes.map((recipe, index) => (
-          <div key={index}>
-            <h1>{recipe.title}</h1>
+          <div className={styles.recipe} key={index}>
+            <Link href={`/recipes/${recipe.slug}`}>{recipe.title}</Link>
+            <p>{recipe.description}</p>
           </div>
         ))}
       </div>
@@ -25,9 +28,9 @@ export default function Recipes() {
   };
 
   return (
-    <section>
+    <article className={styles.recipeList}>
       <h1>Recipe List</h1>
       {recipeList()}
-    </section>
+    </article>
   );
 }

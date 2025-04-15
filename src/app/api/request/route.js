@@ -33,9 +33,11 @@ export async function POST(req) {
           role: "system",
           content: `return response in the following JSON format:
           {
+            "slug": "--"
             "recipeTitle": "--",
             "requestedIngredients": ["--- - Preference: 5", "--- - Preference: 5", "--- - Preference: 5"],
             "optionalIngredients": [---],
+            "description"" "--",
             "instructions": [
               "---",
               "---"
@@ -48,7 +50,7 @@ export async function POST(req) {
         },
         {
           role: "user",
-          content: `i would like to make a recipe containing the following. the list will have an item, as well as how much i like that item.", ${ingredientList}`,
+          content: `i would like to make a recipe containing the following. the list will have an item, as well as how much i like that item: ${ingredientList}`,
         },
       ],
     });

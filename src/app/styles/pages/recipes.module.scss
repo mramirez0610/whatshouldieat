@@ -1,0 +1,14 @@
+@use "../all" as *;
+
+.recipeList {
+  .recipes {
+    width: 75%;
+
+    .recipe {
+      a {
+        font-size: 1.25rem;
+        color: $white;
+      }
+    }
+  }
+}

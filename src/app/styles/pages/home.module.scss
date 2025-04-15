@@ -8,27 +8,39 @@
 .home {
   h1 {
     font-size: 2rem;
-    position: relative;
-    display: inline-block;
     font-family: $header-font;
+  }
 
-    span {
+  .landing {
+    @include toggle-visibility(true);
+
+    h1 {
+      position: relative;
       display: inline-block;
-      transition: transform 300ms ease;
+
+      span {
+        display: inline-block;
+        transition: transform 300ms ease;
+      }
+
+      span:hover {
+        transform: translateY(-10px);
+      }
     }
 
-    span:hover {
-      transform: translateY(-10px);
+    h3 {
+      font-size: 1.3rem;
     }
   }
 
-  h3 {
-    font-size: 1.3rem;
+  .hidden {
+    @include toggle-visibility(false);
+    max-height: 0;
   }
 }
 
 @media (max-width: 850px) {
   .content {
-    width: 85vw;
+    width: 90vw;
   }
 }

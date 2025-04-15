@@ -9,9 +9,11 @@ export default function Recipe({ data, onBack }) {
     const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
     const newRecipe = {
+      slug: data.slug,
       title: data.recipeTitle,
       requestedIngredients: data.requestedIngredients,
       optionalIngredients: data.optionalIngredients,
+      description: data.description,
       instructions: data.instructions,
       tips: data.tips,
     };
@@ -31,12 +33,6 @@ export default function Recipe({ data, onBack }) {
 
   return (
     <article className={styles.recipe}>
-      <button className={styles.back} onClick={onBack}>
-        Back
-      </button>
-      <button className={styles} onClick={saveRecipe}>
-        Save recipe
-      </button>
       <h1 className={styles.recipeTitle}>{data.recipeTitle}</h1>
       <div className={styles.ingredients}>
         <div className={styles.requestedIngredients}>
@@ -81,6 +77,15 @@ export default function Recipe({ data, onBack }) {
             <li key={index}>{tip}</li>
           ))}
         </ul>
+      </div>
+
+      <div className={styles.buttons}>
+        <button className={styles.button} onClick={onBack}>
+          Back
+        </button>
+        <button className={styles.button} onClick={saveRecipe}>
+          Save recipe
+        </button>
       </div>
     </article>
   );

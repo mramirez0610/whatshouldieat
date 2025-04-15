@@ -27,3 +27,14 @@ $header-font: "Panchang", sans-serif;
     transform: translateY(0);
   }
 }
+
+//this is probably the coolest thing ever
+
+@mixin toggle-visibility($is-visible: true) {
+  opacity: if($is-visible, 1, 0);
+  visibility: if($is-visible, visible, hidden);
+  pointer-events: if($is-visible, auto, none);
+  max-height: if($is-visible, 500px, 0);
+  overflow: hidden;
+  transition: opacity 600ms ease, max-height 600ms ease, visibility 600ms ease;
+}

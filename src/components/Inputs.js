@@ -4,7 +4,7 @@ import styles from "@styles/components/input.module.scss";
 import Ingredient from "@components/Ingredient";
 import Recipe from "@components/Recipe";
 
-export default function Inputs() {
+export default function Inputs({ setLandingVisible }) {
   const [ingredients, setIngredients] = useState([]);
   const [response, setResponse] = useState(""); // purely for logging data at this point
   const [recipeData, setRecipeData] = useState(null);
@@ -57,10 +57,12 @@ export default function Inputs() {
 
     setRecipeData(data);
     setShowRecipe(true); // switches views
+    setLandingVisible(false); // hide landing
   }
 
   const handleBackToInputs = () => {
     setShowRecipe(false); // returns to inputs
+    setLandingVisible(true); // show landing
   };
 
   const Ingredients = () => {

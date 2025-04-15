@@ -15,6 +15,9 @@ export default function Nav() {
     <nav className={styles.nav}>
       <ul>
         <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
           <Link href="/recipes">recipes</Link>
         </li>
         <li>
