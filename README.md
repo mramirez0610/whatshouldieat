@@ -19,3 +19,7 @@ work and life can really get in the way, believe it or not. i decided a week tim
 ### day 3 -
 
 day 3! i had the day off yesterday, and did a lot of work. i got the display page looking alright, added a save feature using localStorage, it's all coming together. i also fixed up a quick mobile design, refinements coming soon. this is working really nicely so far. next, i'd like to add rate limiting, firebase authentication, and then start working on a "saved recipes" page. i'll make some time soon to work on this!
+
+### day 4 & 5 -
+
+whoops. i worked on this so much recently in a huge grind period while i was sick. i added a recipe list, as well as created a way for slugs to be generated when a new recipe is saved. i also added some cool animations for when the inputs disappear. also!! i added popup notifications for when recipes are saved/if they've already been saved. cool stuff.
