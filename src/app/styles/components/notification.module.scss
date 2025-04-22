@@ -1,0 +1,35 @@
+.notification {
+  position: fixed;
+  z-index: 102;
+  left: 85%;
+  bottom: 5%;
+  width: 30vw;
+  height: 8vh;
+  transform: translatex(-55%);
+  padding: 0 2%;
+  background-color: green;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  .dismiss {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .message {
+    width: 80%;
+  }
+}
+
+@media (max-width: 850px) {
+  .notification {
+    transform: translatex(-75%);
+    padding: 0 2%;
+    width: 50vw;
+  }
+}

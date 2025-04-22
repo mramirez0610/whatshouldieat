@@ -1,6 +1,10 @@
 import styles from "@styles/components/recipe.module.scss";
+import Notification from "@components/Notification";
+import { useState } from "react";
 
 export default function Recipe({ data, onBack }) {
+  const [notificationMessage, setNotificationMessage] = useState("");
+
   if (!data) return <p>loading</p>;
 
   console.log(data.optionalIngredients);
@@ -25,14 +29,23 @@ export default function Recipe({ data, onBack }) {
     if (!isDuplicate) {
       existingRecipes.push(newRecipe);
       localStorage.setItem("recipes", JSON.stringify(existingRecipes));
-      alert("recipe saved!");
+
+      setNotificationMessage("Recipe saved!");
+      setTimeout(() => setNotificationMessage(""), 5000);
     } else {
-      alert("recipe already saved");
+      setNotificationMessage("Recipe already saved.");
+      setTimeout(() => setNotificationMessage(""), 5000);
     }
   };
 
   return (
     <article className={styles.recipe}>
+      {notificationMessage && (
+        <Notification
+          message={notificationMessage}
+          onClose={() => setNotificationMessage(null)}
+        />
+      )}
       <h1 className={styles.recipeTitle}>{data.recipeTitle}</h1>
       <div className={styles.ingredients}>
         <div className={styles.requestedIngredients}>
@@ -64,11 +77,11 @@ export default function Recipe({ data, onBack }) {
       </div>
       <div className={styles.instructions}>
         <h1>Instructions</h1>
-        <ol>
+        <ul>
           {data.instructions?.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
-        </ol>
+        </ul>
       </div>
       <div className={styles.tips}>
         <h1>Tips</h1>

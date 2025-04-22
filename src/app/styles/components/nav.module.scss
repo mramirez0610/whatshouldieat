@@ -1,13 +1,11 @@
 @use "../all" as *;
 
 .nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   padding: 1rem 2rem;
 
   ul {
     display: flex;
+    justify-content: space-between;
     list-style: none;
 
     li {
