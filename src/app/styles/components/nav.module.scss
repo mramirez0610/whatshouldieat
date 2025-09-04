@@ -5,7 +5,8 @@
 
   ul {
     display: flex;
-    justify-content: space-between;
+    gap: 2%;
+    justify-content: flex-end;
     list-style: none;
 
     li {
@@ -13,7 +14,28 @@
         text-decoration: none;
         font-weight: 500;
         font-size: 1.2rem;
-        color: $white;
+        color: $primary-red;
+      }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    background-color: $primary-red;
+
+    ul {
+      justify-content: space-evenly;
+
+      li {
+        a {
+          color: $white;
+        }
       }
     }
   }

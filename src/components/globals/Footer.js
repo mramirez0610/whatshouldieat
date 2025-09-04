@@ -1,16 +1,14 @@
 "use client";
 import { useState } from "react";
-import Modal from "@components/Modal";
-import AboutModal from "@components/AboutModal";
+import Modal from "@/components/globals/Modal";
+import AboutModal from "@/components/globals/AboutModal";
 import Link from "next/link";
 import { Heart } from "@phosphor-icons/react";
 import styles from "@styles/components/footer.module.scss";
+import useModal from "@/app/hooks/useModal";
 
 export default function Footer() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const { isOpen, open, close } = useModal();
 
   return (
     <div className={styles.footer}>
@@ -23,8 +21,8 @@ export default function Footer() {
         </Link>
       </h4>
       <div className={styles.modalWrapper}>
-        <h4 onClick={openModal}>More About This</h4>
-        <Modal isOpen={isModalOpen} closeModal={closeModal}>
+        <h4 onClick={open}>More About This</h4>
+        <Modal isOpen={isOpen} closeModal={close}>
           <AboutModal />
         </Modal>
       </div>

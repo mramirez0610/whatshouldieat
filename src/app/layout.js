@@ -1,7 +1,7 @@
 import "@styles/globals.scss";
 import styles from "@styles/pages/home.module.scss";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Nav from "@/components/globals/Nav";
+import Footer from "@/components/globals/Footer";
 
 export default function RootLayout({ children }) {
   return (
