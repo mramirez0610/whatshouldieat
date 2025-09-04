@@ -1,4 +1,5 @@
 $black: #2e3131;
+$primary-red: #a52700;
 $white: #f5f4e9;
 $body-font: "Tabular", sans-serif;
 $header-font: "Panchang", sans-serif;
@@ -7,17 +8,19 @@ $header-font: "Panchang", sans-serif;
   font-family: $body-font;
   display: block;
   box-sizing: border-box;
-  //temporarily grey
-  border: 2px solid grey;
+  border: 2px solid $black;
   border-radius: 0.75em;
   padding: 0.75em 1.5em;
   background: $white;
   color: $black;
   transform: translateY(-0.2em);
   transition: transform 200ms ease;
-  font-size: 17px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     transform: translateY(-0.33em);
@@ -26,6 +29,89 @@ $header-font: "Panchang", sans-serif;
   &:active {
     transform: translateY(0);
   }
+
+  @media (max-width: 950px) {
+    transform: translateY(-0.2em);
+    &:hover {
+      transform: translateY(-0.2em);
+    }
+  }
+}
+
+@mixin buttonSmall {
+  position: relative;
+  padding: 0.5em 1em;
+  @include button;
+}
+
+@mixin input {
+  padding: 1em 1.5em;
+  background-color: #adadad;
+  font-family: $body-font;
+  box-sizing: border-box;
+  border-color: transparent;
+  border-radius: 0.75em;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 75%;
+  transition: background-color 300ms ease;
+
+  ::placeholder {
+    color: $black;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $white;
+    border: 2px solid $black;
+  }
+}
+
+@mixin container {
+  font-family: $body-font;
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid $black;
+  border-radius: 0.75em;
+  padding: 1em 1.5em;
+  background: $white;
+  color: $black;
+  height: fit-content;
+
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      font-family: $header-font;
+      color: $primary-red;
+      font-size: 1.5em;
+    }
+
+    .dropdownButton {
+      @include buttonSmall;
+    }
+  }
+
+  .active {
+    background-color: $primary-red;
+    color: $white;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1050px) {
+    width: 100%;
+  }
+}
+
+@mixin recipeContainer {
+  font-family: $body-font;
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid $black;
+  border-radius: 0.75em;
+  padding: 1em 1.5em;
+  background: $white;
+  color: $black;
 }
 
 //this is probably the coolest thing ever

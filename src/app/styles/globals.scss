@@ -9,8 +9,8 @@
 html,
 body {
   height: 100%;
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $primary-red;
   font-family: $body-font;
   font-size: 16px;
   scroll-behavior: smooth;
@@ -24,3 +24,26 @@ h6,
 p {
   margin-bottom: 16px;
 }
+button {
+  @include button;
+}
+
+// body::-webkit-scrollbar {
+//   width: 8px;
+// }
+
+// body::-webkit-scrollbar-track {
+//   background: $black;
+//   border-radius: 4px;
+// }
+
+// body::-webkit-scrollbar-thumb {
+//   background: $primary-red;
+//   border-radius: 4px;
+// }
+
+// @supports not selector(::-webkit-scrollbar) {
+//   body {
+//     scrollbar-color: $primary-red $black;
+//   }
+// }

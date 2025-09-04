@@ -1,0 +1,46 @@
+@use "../all" as *;
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 2vh;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    .button {
+      @include button;
+    }
+  }
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 850px) {
+  .inputs {
+    .input {
+      flex-direction: column;
+
+      input {
+        width: 90%;
+      }
+
+      .preference {
+        width: 100%;
+      }
+    }
+  }
+}

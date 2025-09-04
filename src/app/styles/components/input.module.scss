@@ -1,89 +1,117 @@
 @use "../all" as *;
 
-.inputs {
+.inputContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
 
-  label {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-
-  .input {
+  .textContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 5%;
-    width: 100%;
+    gap: 2vh;
 
-    input {
-      padding: 1em 1.5em;
-      background-color: #adadad;
-      font-family: $body-font;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      margin-bottom: 10px;
-      width: 75%;
-      transition: background-color 300ms ease;
-
-      &:focus {
-        outline: none;
-        background-color: $white;
-      }
+    .input {
+      @include input;
+      width: 100%;
     }
 
-    .preference {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      margin-bottom: 10px;
-      width: 50%;
-      text-align: center;
-
-      label {
-        margin-bottom: 0;
-      }
+    input::placeholder {
+      color: $black;
     }
 
     .remove {
-      @include button;
-
-      padding: 0.5em 1.5em;
+      @include buttonSmall;
     }
   }
 
-  .buttons {
+  .preferenceContainer {
     display: flex;
-    gap: 2vh;
+    align-items: center;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
 
-    .button {
-      @include button;
+    .thumbTag {
+      position: absolute;
+
+      pointer-events: none;
+      transition: left 0.1s;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-size: 0.9em;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+      user-select: none;
     }
-  }
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-}
 
-@media (max-width: 850px) {
-  .inputs {
-    .input {
-      flex-direction: column;
+    label {
+      margin-bottom: 0;
+    }
 
-      input {
-        width: 90%;
-      }
+    // reset
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 15rem;
+      border: none;
+    }
 
-      .preference {
-        width: 100%;
-      }
+    /* Removes default focus */
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+    /* slider track */
+    input[type="range"]::-webkit-slider-runnable-track {
+      background-color: #a52700;
+      border-radius: 1rem;
+      height: 0.5rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -4px; /* Centers thumb on the track */
+      background-color: #2e3131;
+      border-radius: 1rem;
+      height: 1rem;
+      width: 1rem;
+    }
+
+    input[type="range"]:focus::-webkit-slider-thumb {
+      outline: 3px solid #2e3131;
+      outline-offset: 0.125rem;
+    }
+
+    /*********** Firefox styles ***********/
+    /* slider track */
+    input[type="range"]::-moz-range-track {
+      background-color: #a52700;
+      border-radius: 1rem;
+      height: 0.5rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-moz-range-thumb {
+      background-color: #2e3131;
+      border: none; /*Removes extra border that FF applies*/
+      border-radius: 1rem;
+      height: 1rem;
+      width: 1rem;
+    }
+
+    input[type="range"]:focus::-moz-range-thumb {
+      outline: 3px solid #2e3131;
+      outline-offset: 0.125rem;
     }
   }
 }
