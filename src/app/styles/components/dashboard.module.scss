@@ -1,0 +1,25 @@
+.userDashboard {
+  .dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+
+    // grid-template-columns: 2fr 3fr;
+    align-items: start;
+    grid-row-gap: 2.5%;
+    grid-column-gap: 2.5%;
+    max-width: 100%;
+
+    .quickSection {
+      display: flex;
+      max-width: 100%;
+      gap: 1rem;
+      flex-direction: column;
+    }
+
+    @media (max-width: 1050px) {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5vh;
+    }
+  }
+}
