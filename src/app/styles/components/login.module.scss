@@ -1,0 +1,17 @@
+@use "../all" as *;
+
+.user {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .guest,
+  .login {
+    button {
+      @include button;
+    }
+  }
+}
