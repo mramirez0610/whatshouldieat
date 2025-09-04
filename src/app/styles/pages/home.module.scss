@@ -1,30 +1,34 @@
 @use "../all" as *;
 
 .content {
-  width: 55vw;
+  width: 80vw;
   margin: 0 auto;
 }
 
 .home {
-  h1 {
-    font-size: 2rem;
-    font-family: $header-font;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 
   .landing {
     @include toggle-visibility(true);
 
-    h1 {
+    .title {
       position: relative;
       display: inline-block;
+      font-family: $header-font;
+      font-size: 3rem;
 
-      span {
-        display: inline-block;
-        transition: transform 300ms ease;
-      }
+      .word {
+        span {
+          display: inline-block;
+          transition: transform 300ms ease;
+        }
 
-      span:hover {
-        transform: translateY(-10px);
+        span:hover {
+          transform: translateY(-10px);
+        }
       }
     }
 
@@ -32,15 +36,17 @@
       font-size: 1.3rem;
     }
   }
-
-  .hidden {
-    @include toggle-visibility(false);
-    max-height: 0;
-  }
 }
 
 @media (max-width: 850px) {
   .content {
     width: 90vw;
+  }
+
+  .home {
+    .landing {
+      h1 {
+      }
+    }
   }
 }
