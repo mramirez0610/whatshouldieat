@@ -2,12 +2,17 @@
 
 .recipeList {
   .recipes {
-    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+    flex-wrap: wrap;
 
     .recipe {
+      width: 30%;
+      @include recipeContainer;
       a {
         font-size: 1.25rem;
-        color: $white;
+        color: $primary-red;
       }
     }
   }
