@@ -64,7 +64,7 @@ export default function SignUpForm() {
         Password:
       </label>
       <input
-        type="text"
+        type="password"
         onChange={(e) => {
           setSignUpPassword(e.target.value);
         }}
