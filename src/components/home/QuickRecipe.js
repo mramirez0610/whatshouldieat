@@ -3,12 +3,13 @@ import { useState } from "react";
 import { ArrowRight, CaretDown } from "@phosphor-icons/react";
 import styles from "@styles/components/quickRecipe.module.scss";
 
-export default function QuickRecipe({ setResponse, setShowRecipe }) {
+export default function QuickRecipe({ setRecipeData, setLoading }) {
   const [genre, setGenre] = useState("");
   const [hide, setHide] = useState(false);
   const genres = ["Sweet", "Sour", "Salty", "Spicy", "Umami"];
 
   async function submit() {
+    setLoading(true);
     const res = await fetch("/api/request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -16,13 +17,14 @@ export default function QuickRecipe({ setResponse, setShowRecipe }) {
     });
 
     if (!res.ok) {
-      setResponse("error fetching respones");
+      setLoading(false);
+      setRecipeData("error fetching respones");
       return;
     }
 
     const data = await res.json();
-    setResponse(data);
-    setShowRecipe(true);
+    setRecipeData(data);
+    setLoading(false);
   }
 
   return (

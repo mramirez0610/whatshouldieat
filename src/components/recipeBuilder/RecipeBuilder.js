@@ -1,15 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import Recipe from "../globals/Recipe";
 import styles from "@styles/components/recipeBuilder.module.scss";
 import Inputs from "@/components/recipeBuilder/Inputs";
 
-export default function RecipeBuilder() {
+export default function RecipeBuilder({ recipeData, loading }) {
   const [ingredients, setIngredients] = useState([]);
   const [response, setResponse] = useState("");
   const [hide, setHide] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false); // toggles between inputs and recipe
+
+  useEffect(() => {
+    if (recipeData) {
+      setResponse(recipeData);
+      setShowRecipe(true);
+    }
+  }, [recipeData]);
 
   async function submit() {
     const res = await fetch("/api/request", {
@@ -46,7 +53,11 @@ export default function RecipeBuilder() {
 
   return (
     <section className={styles.recipeBuilder}>
-      {showRecipe ? (
+      {loading ? (
+        <div className={styles.loadingScreen}>
+          <h2>Loading...</h2>
+        </div>
+      ) : showRecipe ? (
         <Recipe data={response} onBack={handleBackToInputs} />
       ) : (
         <>

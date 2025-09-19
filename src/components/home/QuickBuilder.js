@@ -3,7 +3,7 @@ import { use, useState } from "react";
 import { ArrowRight, CaretDown } from "@phosphor-icons/react";
 import styles from "@styles/components/quickBuilder.module.scss";
 
-export default function QuickBuilder({ setResponse, setShowRecipe }) {
+export default function QuickBuilder({ setRecipeData, setLoading }) {
   const [ingredients, setIngredients] = useState({});
   const [genre, setGenre] = useState("Salty");
   const [hide, setHide] = useState(true);
@@ -62,6 +62,7 @@ export default function QuickBuilder({ setResponse, setShowRecipe }) {
   const components = expand ? mealComponents : minimizedComponents;
 
   async function submit() {
+    setLoading(true);
     const ingredientsArray = Object.entries(ingredients)
       .filter(([category, value]) => value && value !== "None")
       .map(([category, value], idx) => ({
@@ -81,14 +82,15 @@ export default function QuickBuilder({ setResponse, setShowRecipe }) {
     });
 
     if (!res.ok) {
-      setResponse("error fetching response");
+      setRecipeData("error fetching response");
+      setLoading(false);
       return;
     }
 
     const data = await res.json();
     console.log("response data:", data);
-    setResponse(data);
-    setShowRecipe(true);
+    setRecipeData(data);
+    setLoading(false);
   }
 
   return (
