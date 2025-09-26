@@ -7,12 +7,13 @@
 
 .home {
   display: flex;
-  flex-direction: column;
+  height: 75vh;
   align-items: center;
   justify-content: space-evenly;
 
   .landing {
     @include toggle-visibility(true);
+    width: 50vw;
 
     .title {
       position: relative;
@@ -44,7 +45,9 @@
   }
 
   .home {
+    flex-direction: column;
     .landing {
+      width: 90vw;
       h1 {
       }
     }

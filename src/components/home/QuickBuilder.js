@@ -1,5 +1,5 @@
 "use client";
-import { use, useState } from "react";
+import { useState } from "react";
 import { ArrowRight, CaretDown } from "@phosphor-icons/react";
 import styles from "@styles/components/quickBuilder.module.scss";
 
