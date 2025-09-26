@@ -1,16 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Input from "@/components/recipeBuilder/Input";
 
-export default function Inputs({
-  ingredients,
-  setIngredients,
-
-  addIngredient,
-}) {
+export default function Inputs({ ingredients, setIngredients, addIngredient }) {
   useEffect(() => {
-    addIngredient();
-  }, []);
+    ingredients.length === 0 ? addIngredient() : null;
+  }, [addIngredient, ingredients]);
 
   const updateIngredient = (id, newValue, newPref) => {
     //this looks digusting LMAO

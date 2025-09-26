@@ -26,11 +26,8 @@ export default function Dashboard({ username }) {
               setLoading={setLoading}
             />
           </div>
-
           <RecipeBuilder recipeData={recipeData} loading={loading} />
         </div>
-
-        {/* <Link href="/recipeBuilder">recipe builder</Link> */}
       </>
     </section>
   );

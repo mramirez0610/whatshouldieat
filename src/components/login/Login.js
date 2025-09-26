@@ -18,7 +18,7 @@ export default function Login() {
       </div>
       <span>OR</span>
 
-      <h3>Don't want an account?</h3>
+      <h3>Don&apos;t want an account?</h3>
       <div className={styles.guest}>
         <button
           className={styles.button}
