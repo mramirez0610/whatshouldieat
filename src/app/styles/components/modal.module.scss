@@ -43,3 +43,11 @@
     }
   }
 }
+
+@media (max-width: 1050px) {
+  .modal {
+    .modalContainer {
+      width: 95vw;
+    }
+  }
+}
