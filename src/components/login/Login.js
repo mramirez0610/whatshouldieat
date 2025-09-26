@@ -10,12 +10,20 @@ export default function Login() {
 
   return (
     <div className={styles.user}>
+      <h3>Sign up for free today!</h3>
       <div className={styles.login}>
-        <button onClick={open}>login/sign up</button>
+        <button className={styles.button} onClick={open}>
+          login/sign up
+        </button>
       </div>
       <span>OR</span>
+
+      <h3>Don't want an account?</h3>
       <div className={styles.guest}>
-        <button onClick={() => signInAnonymously(auth)}>
+        <button
+          className={styles.button}
+          onClick={() => signInAnonymously(auth)}
+        >
           continue as guest
         </button>
       </div>
